@@ -1,19 +1,9 @@
-const mongoose = require('mongoose')
-const userSchema = new mongoose.Schema({
-    name : {
-        type: String,
-        require: true,
-        unique: true,
-        lowercase: true
-    },
-    email: String,
-    password : {
-        type: String,
-        require: [true , "Password is required"]
-    } 
+import mongoose from "mongoose"
+const todoSchema = mongoose.Schema({
+
 },
 {
-    timestamps : true
-}
-)
-export const User = mongoose.models('User' , userSchema)
+    timestamps: true
+})
+
+export const todos = mongoose.model('Todo' , todoSchema)

@@ -1,9 +1,12 @@
 import mongoose from 'mongoose'
 
 const productSchema = new mongoose.Schema({
+    // you can store images pdfs videos etc in the form of buffer in mongodb but we don't do this because it make 
+    // db too heavy so we use services like clodinary or aws to store our images they give us a url that url we store here in our db so 
     image: {
         type: String
     },
+    // order doesn't matters in object but matters in array
     name: {
         type: String,
         required: true
@@ -11,6 +14,10 @@ const productSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: true,
+        default: 0
+    },
+    stock: {
+        type: Number,
         default: 0
     },
     description: {

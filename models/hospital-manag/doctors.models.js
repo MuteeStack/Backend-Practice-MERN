@@ -1,5 +1,14 @@
 import mongoose from "mongoose"
-
+const workSchema =  new mongoose.Schema({
+    Timing: {
+        type: TimeRanges,
+        required: true
+    },
+    hospitalDetail: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Hospital"
+    }
+})
 const doctorSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -21,12 +30,7 @@ const doctorSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    worksIn: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Hospital"
-        }
-    ]
+    worksIn: [workSchema]
 })
 
 export const Doctor = mongoose.model("Doctor" , doctorSchema)
